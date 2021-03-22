@@ -44,5 +44,6 @@ class CreateUser extends Command
         $user->password = bcrypt($this->argument('password'));
         $user->api_token = bin2hex(openssl_random_pseudo_bytes(15));
         $user->save();
+        $user->attachRole('administrator');
     }
 }
